@@ -13,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Talon;
+// import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -49,10 +49,20 @@ public class Robot extends TimedRobot {
     rightMain = new WPI_TalonFX(3);
     rightFollow = new WPI_TalonFX(4);
 
-    leftMotors = new SpeedControllerGroup(leftMain, leftFollow);
-    rightMotors = new SpeedControllerGroup(rightMain, rightFollow);
+    // Uncomment if using the SpeedControllerGroups
+    // leftMotors = new SpeedControllerGroup(leftMain, leftFollow);
+    // rightMotors = new SpeedControllerGroup(rightMain, rightFollow);
 
-    twoMotorDrive = new DifferentialDrive(leftMotors, rightMotors);
+    // Comment if using the SpeedControllerGroups
+    // In case the SpeedControllerGroups dont work out, then use below:
+    leftFollow.follow(leftMain);
+    rightFollow.follow(rightMain);
+
+    // Uncomment if using the SpeedControllerGroups
+    // twoMotorDrive = new DifferentialDrive(leftMotors, rightMotors);
+
+    // Comment if using the SpeedControllerGroups
+    twoMotorDrive = new DifferentialDrive(leftMain, rightMain);
 
     leftStick = new Joystick(0);
     rightStick = new Joystick(1);

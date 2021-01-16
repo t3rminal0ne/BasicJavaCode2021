@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
@@ -27,10 +29,10 @@ public class Robot extends TimedRobot {
    * for any initialization code.
    */
 
-  public Talon rightMain;
-  public Talon rightFollow;
-  public Talon leftMain;
-  public Talon leftFollow;
+  public WPI_TalonFX rightMain;
+  public WPI_TalonFX rightFollow;
+  public WPI_TalonFX leftMain;
+  public WPI_TalonFX leftFollow;
 
   public SpeedControllerGroup leftMotors;
   public SpeedControllerGroup rightMotors;
@@ -42,10 +44,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    leftMain = new Talon(1);
-    leftFollow = new Talon(2);
-    rightMain = new Talon(3);
-    rightFollow = new Talon(4);
+    leftMain = new WPI_TalonFX(1);
+    leftFollow = new WPI_TalonFX(2);
+    rightMain = new WPI_TalonFX(3);
+    rightFollow = new WPI_TalonFX(4);
 
     leftMotors = new SpeedControllerGroup(leftMain, leftFollow);
     rightMotors = new SpeedControllerGroup(rightMain, rightFollow);
